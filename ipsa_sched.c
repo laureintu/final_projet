@@ -36,7 +36,6 @@ static void task4(void * pvParameters);
 
 
 /* A software timer that is started from the tick hook. */
-//static TimerHandle_t xTimer = NULL;
 void ipsa_sched(void)
 {
 xTaskCreate( task1, "Rx", configMINIMAL_STACK_SIZE, NULL, task1priority, NULL );                          
@@ -44,13 +43,6 @@ xTaskCreate( task2, "TX", configMINIMAL_STACK_SIZE, NULL, task2priority, NULL );
 xTaskCreate( task3, "FX", configMINIMAL_STACK_SIZE, NULL, task3priority, NULL );
 xTaskCreate( task4, "ZX", configMINIMAL_STACK_SIZE, NULL, task4priority, NULL );
 
-/* Create the software timer, but don't start it yet. */
-//xTimer = xTimerCreate( "Timer",xTimerPeriod,pdTRUE,NULL ); 
-
-/*if( xTimer != NULL )
-{
-	xTimerStart( xTimer, 0 );
-};*/
 
 /* Start the tasks and timer running. */
 vTaskStartScheduler();
